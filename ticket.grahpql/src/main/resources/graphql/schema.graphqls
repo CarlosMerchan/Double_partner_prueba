@@ -1,0 +1,49 @@
+type Query{
+    findTicketById(ticketId: String) : Ticket
+    findAllTickets: [Ticket]
+}
+
+type Mutation{
+    createTicket(inputTicket:InputTicket):String,
+    deleteTicket(idTicket:String):String,
+    closeTicket(inputCloseTicket:InputCloseTicket):String
+}
+
+
+
+type Ticket{
+    id:ID,
+    user:User!
+    creationDate:String!,
+    updateDate:String,
+    status:String!,
+    description:String!,
+    solution:String
+}
+
+type User {
+    documentNumber:ID!,
+    firstName:String,
+    secondName:String,
+    lastName:String,
+    email:String
+
+}
+
+input InputTicket{
+    inputUser:InputUser!,
+    description:String!,
+}
+
+input InputUser{
+    documentNumber:ID!,
+    firstName:String!,
+    secondName:String,
+    lastName:String!,
+    email:String!
+}
+
+input InputCloseTicket{
+    idTicket:String,
+    descriptionSolution:String
+}

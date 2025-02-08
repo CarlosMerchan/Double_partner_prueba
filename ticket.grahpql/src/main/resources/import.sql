@@ -1,0 +1,40 @@
+INSERT INTO ticket_app.users (document_number, email, first_name, last_name, second_name) VALUES
+('123456789', 'juan.perez@example.com', 'Juan', 'Pérez', 'Martínez'),
+('987654321', 'maria.gomez@example.com', 'María', 'Gómez', 'Rodríguez'),
+('234567890', 'luis.martin@example.com', 'Luis', 'Martín', 'Sánchez'),
+('345678901', 'ana.lopez@example.com', 'Ana', 'López', 'García'),
+('456789012', 'pedro.ramirez@example.com', 'Pedro', 'Ramírez', 'Fernández'),
+('567890123', 'carla.fernandez@example.com', 'Carla', 'Fernández', 'López'),
+('678901234', 'jose.castro@example.com', 'José', 'Castro', 'Jiménez'),
+('789012345', 'luisa.romero@example.com', 'Luisa', 'Romero', 'Martín'),
+('890123456', 'javier.santos@example.com', 'Javier', 'Santos', 'González'),
+('901234567', 'patricia.alvarez@example.com', 'Patricia', 'Álvarez', 'Moreno'),
+('112233445', 'miguel.paredes@example.com', 'Miguel', 'Paredes', 'Muñoz'),
+('223344556', 'sofia.morales@example.com', 'Sofía', 'Morales', 'Ruiz'),
+('334455667', 'rafael.vasquez@example.com', 'Rafael', 'Vásquez', 'Hernández'),
+('445566778', 'laura.castillo@example.com', 'Laura', 'Castillo', 'Fernández'),
+('556677889', 'carlos.perez@example.com', 'Carlos', 'Pérez', 'Lozano');
+
+
+INSERT INTO ticket_app.tickets (id, creation_date, description, status, user)
+VALUES
+(1, '2025-02-08 10:00:00', 'Descripción del registro 1', 'opened', '123456789'),
+(2, '2025-02-08 10:01:00', 'Descripción del registro 2', 'opened', '987654321'),
+(3, '2025-02-08 10:02:00', 'Descripción del registro 3', 'opened', '234567890'),
+(4, '2025-02-08 10:03:00', 'Descripción del registro 4', 'opened', '345678901'),
+(5, '2025-02-08 10:04:00', 'Descripción del registro 5', 'opened', '456789012'),
+(6, '2025-02-08 10:05:00', 'Descripción del registro 6', 'opened', '567890123'),
+(7, '2025-02-08 10:06:00', 'Descripción del registro 7', 'opened', '678901234'),
+(8, '2025-02-08 10:07:00', 'Descripción del registro 8', 'opened', '789012345'),
+(9, '2025-02-08 10:08:00', 'Descripción del registro 9', 'opened', '890123456'),
+(10, '2025-02-08 10:09:00', 'Descripción del registro 10', 'opened', '901234567'),
+(11, '2025-02-08 10:10:00', 'Descripción del registro 11', 'opened', '112233445'),
+(12, '2025-02-08 10:11:00', 'Descripción del registro 12', 'opened', '223344556'),
+(13, '2025-02-08 10:12:00', 'Descripción del registro 13', 'opened', '334455667'),
+(14, '2025-02-08 10:13:00', 'Descripción del registro 14', 'opened', '445566778'),
+(15, '2025-02-08 10:14:00', 'Descripción del registro 15', 'opened', '556677889'),
+(16, '2025-02-08 10:15:00', 'Descripción del registro 16', 'opened', '123456789'),
+(17, '2025-02-08 10:16:00', 'Descripción del registro 17', 'opened', '987654321'),
+(18, '2025-02-08 10:17:00', 'Descripción del registro 18', 'opened', '234567890'),
+(19, '2025-02-08 10:18:00', 'Descripción del registro 19', 'opened', '345678901'),
+(20, '2025-02-08 10:19:00', 'Descripción del registro 20', 'opened', '456789012');

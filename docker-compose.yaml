@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  mysql8:
+    container_name: mysql8
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: testroot
+      MYSQL_DATABASE: ticket_app
+    volumes:
+      - data-mysql:/var/lib/mysql
+    restart: always
+    networks:
+      - spring
+  
+
+  ticket_app:
+    container_name: ticket_app
+    image: carlosmerchan15/ticket-app:latest
+    ports:
+      - "9000:9000"
+    environment: 
+      USER: root
+      PASSWORD: testroot
+      DBHOST: mysql8:3306
+    networks:
+      - spring
+    depends_on:
+      - mysql8
+    restart: always
+
+  user_list:
+    container_name: user_list
+    image: carlosmerchan15/userlist:latest
+    ports:
+      - "9001:9001"  
+    networks:
+      - spring    
+    restart: always
+
+volumes:
+  data-mysql:
+    name: data-mysql
+  data-postgres:
+    name: data-postgres
+
+networks:
+  spring:
+    name: spring

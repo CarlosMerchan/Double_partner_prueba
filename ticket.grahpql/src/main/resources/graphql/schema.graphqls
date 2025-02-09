@@ -1,6 +1,6 @@
 type Query{
     findTicketById(ticketId: String) : Ticket
-    findAllTickets: [Ticket]
+    findAllTickets(page:Int,size:Int): [Ticket]
 }
 
 type Mutation{

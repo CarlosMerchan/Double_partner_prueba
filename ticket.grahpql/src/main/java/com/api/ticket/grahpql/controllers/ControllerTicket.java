@@ -5,6 +5,8 @@ import com.api.ticket.grahpql.graphql.InputCloseTicket;
 import com.api.ticket.grahpql.graphql.InputTicket;
 import com.api.ticket.grahpql.service.ITicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -23,9 +25,11 @@ public class ControllerTicket {
         return  ticketService.findById(ticketId);
     }
 
+
     @QueryMapping
-    public List<Ticket> findAllTickets(){
-        return  ticketService.findAll();
+    public Page<Ticket> findAllTickets(@Argument int page, @Argument int size){
+        PageRequest pr = PageRequest.of(page,size);
+        return  ticketService.findAll(pr);
     }
 
 

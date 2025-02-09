@@ -8,6 +8,8 @@ import com.api.ticket.grahpql.persistence.ITicketDao;
 import com.api.ticket.grahpql.service.ITicketService;
 import com.api.ticket.grahpql.utils.StatusTicket;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,9 +30,11 @@ public class TicketServiceImpl implements ITicketService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Ticket> findAll() {
-        return  ticketDao.findAll();
+    public Page<Ticket> findAll(PageRequest pr) {
+        return  ticketDao.findAll(pr);
     }
+
+
 
     @Override
     @Transactional

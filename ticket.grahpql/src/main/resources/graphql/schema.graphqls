@@ -1,12 +1,21 @@
+directive @NotBlank(message : String ) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @Digits(integer : Int!, message : String ) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+
 type Query{
-    findTicketById(ticketId: String) : Ticket
+    findTicketById(ticketId: String @NotBlank(message: "ticketId is mandatory") @Digits(integer: 12,message: "DocumentNumber is not a valid number or is greater than 12 digits.")) : Ticket
     findAllTickets(page:Int,size:Int): [Ticket]
+    findUserById(userId:String @NotBlank(message: "userId is mandatory") @Digits(integer: 12,message: "DocumentNumber is not a valid number or is greater than 12 digits.")):User
+    findTicketsForUser(userId:String @Digits(integer: 12,message: "DocumentNumber is not a valid number or is greater than 12 digits.")
+    ,page:Int,size:Int):[Ticket]
 }
 
 type Mutation{
     createTicket(inputTicket:InputTicket):String,
     deleteTicket(idTicket:String):String,
     closeTicket(inputCloseTicket:InputCloseTicket):String
+    updateUser(inputUser:InputUser):String
 }
 
 
@@ -31,19 +40,19 @@ type User {
 }
 
 input InputTicket{
-    inputUser:InputUser!,
-    description:String!,
+    inputUser:InputUser! ,
+    description:String! @NotBlank (message: "Description is mandatory"),
 }
 
 input InputUser{
-    documentNumber:ID!,
-    firstName:String!,
+    documentNumber:ID @NotBlank(message: "DocumentNumber is mandatory") @Digits(integer: 12,message: "DocumentNumber is not a valid number or is greater than 12 digits."),
+    firstName:String! @NotBlank (message: "FirstName is mandatory"),
     secondName:String,
-    lastName:String!,
-    email:String!
+    lastName:String! @NotBlank (message: "LastName is mandatory"),
+    email:String! @NotBlank (message: "Email is mandatory")
 }
 
 input InputCloseTicket{
-    idTicket:String,
-    descriptionSolution:String
+    idTicket:String @NotBlank(message: "IdTicket is mandatory") @Digits(integer: 12,message: "IDTicket is not a valid number or is greater than 12 digits."),
+    descriptionSolution:String! @NotBlank(message: "DescriptionSolution is mandatory")
 }

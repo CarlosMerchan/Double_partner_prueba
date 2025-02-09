@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class InputUser {
 
-    private Long documentNumber;
+    private String documentNumber;
     private String firstName;
     private String secondName;
     private String lastName;

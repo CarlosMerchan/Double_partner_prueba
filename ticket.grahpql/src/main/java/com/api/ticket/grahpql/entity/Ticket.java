@@ -18,7 +18,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JoinColumn(name="user")
-    @ManyToOne(fetch=FetchType.LAZY,targetEntity = Users.class,cascade = CascadeType.MERGE)
+    @ManyToOne(fetch=FetchType.EAGER,targetEntity = Users.class,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Users user;
     @Column(name="creation_date")
     private LocalDateTime creationDate;
